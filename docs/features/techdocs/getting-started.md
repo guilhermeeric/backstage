@@ -97,7 +97,7 @@ It takes one more step to use the `ReportIssue` add-on, you have to configure an
 
 <img data-zoomable src="../../assets/techdocs/report-issue-addon.png" alt="TechDocs Report Issue Add-on" />
 
-And if you click on the link, you will be redirected to the new issue page according to the source code provider you are using. The ReportIssue add-on also accepts some properties, check [here]() for more information.
+And if you click on the link, you will be redirected to the new issue page according to the source code provider you are using. The ReportIssue add-on also accepts some properties, check [here](https://backstage.io/docs/reference/plugin-techdocs-module-addons-contrib.reportissue) for more information.
 
 <img data-zoomable src="../../assets/techdocs/report-issue-template.png" alt="TechDocs Report Issue Template" />
 

@@ -58,6 +58,75 @@ export type ReportIssueProps = {
 
 /**
  * Show report issue button when text is highlighted
+ *
+ * @remarks
+ * Before using it you have to configure an `edit_uri` for your pages as explained {@link https://backstage.io/docs/features/techdocs/faqs#is-it-possible-for-users-to-suggest-changes-or-provide-feedback-on-a-techdocs-page | here} and remember, it only works for Github or Gitlab.
+ *
+ * @example
+ * Here's a simple example:
+ * ```
+ * import {
+ *   DefaultTechDocsHome,
+ *   TechDocsIndexPage,
+ *   TechDocsReaderPage,
+ * } from '@backstage/plugin-techdocs';
+ * import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
+ * import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+ *
+ * // ...
+ *
+ * const AppRoutes = () => {
+ *   <FlatRoutes>
+ *     // ... other plugin routes
+ *     <Route path="/docs" element={<TechDocsIndexPage />}>
+ *       <DefaultTechDocsHome />
+ *     </Route>
+ *     <Route
+ *       path="/docs/:namespace/:kind/:name/*"
+ *       element={<TechDocsReaderPage />}
+ *     >
+ *       <TechDocsAddons>
+ *         <ReportIssue />
+ *       </TechDocsAddons>
+ *     </Route>
+ *   </FlatRoutes>;
+ * };
+ * ```
+ *
+ * @example
+ * The `<ReportIssue/>` add-on also accepts some properties, see below how to do that:
+ * ```
+ * //
+ * import {
+ *   DefaultTechDocsHome,
+ *   TechDocsIndexPage,
+ *   TechDocsReaderPage,
+ * } from '@backstage/plugin-techdocs';
+ * import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
+ * import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+ *
+ * // ...
+ * const templateBuilder = ({ selection }: ReportIssueTemplateBuilder) => (({
+ *  title: 'Custom issue title',
+ *  body: `Custom issue body: ${selection.toString()}`
+ * }))
+ *
+ * const AppRoutes = () => {
+ *   <FlatRoutes>
+ *     // ... other plugin routes
+ *     <Route path="/docs" element={<TechDocsIndexPage />}>
+ *       <DefaultTechDocsHome />
+ *     </Route>
+ *     <Route
+ *       path="/docs/:namespace/:kind/:name/*"
+ *       element={<TechDocsReaderPage />}
+ *     >
+ *       <TechDocsAddons>
+ *         <ReportIssue debounceTime={300} templateBuilder={templateBuilder} />
+ *       </TechDocsAddons>
+ *     </Route>
+ *   </FlatRoutes>;
+ * ```
  */
 export const ReportIssueAddon = ({
   debounceTime = 500,
